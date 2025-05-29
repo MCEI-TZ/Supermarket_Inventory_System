@@ -1,10 +1,10 @@
-package com.mceit_z.Supermarket_inventory_System;
+package com.mceit_z.Inventory_System;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SupermarketInventorySystemApplicationTests {
+class InventorySystemApplicationTests {
 
 	@Test
 	void contextLoads() {
