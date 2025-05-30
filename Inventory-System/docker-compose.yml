@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:bullseye
+    restart: always
+    container_name: supermarket_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: Mexz
+      POSTGRES_PASSWORD: @MexzSystemInventory13
+      POSTGRES_DB: supermarket_inventory_system
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
