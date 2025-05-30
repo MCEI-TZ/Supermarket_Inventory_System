@@ -34,6 +34,6 @@ public class Branch implements Serializable {
     private String region;
 
     @OneToMany(mappedBy = "branch")
-    private List<User> users;
+    private List<UserProfile> users;
 
 }
