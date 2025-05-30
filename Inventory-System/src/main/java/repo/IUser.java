@@ -1,5 +1,6 @@
 package repo;
 
+
 import models.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
