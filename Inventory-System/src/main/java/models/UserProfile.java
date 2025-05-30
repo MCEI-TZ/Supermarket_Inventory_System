@@ -23,6 +23,7 @@ public class UserProfile implements Serializable {
     @Column(name = "id_user")
     private Long idUser;
 
+    private String username;
 
     @NotEmpty
     private String password;
