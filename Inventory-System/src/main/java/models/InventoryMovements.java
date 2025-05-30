@@ -26,7 +26,7 @@ public class InventoryMovements implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_user")
-    private User user; // Assuming you have a User entity representing the user who made the movement
+    private UserProfile user; // Assuming you have a UserProfile entity representing the user who made the movement
 
     private String movementType; // e.g., "IN", "OUT", "ADJUSTMENT"
 
