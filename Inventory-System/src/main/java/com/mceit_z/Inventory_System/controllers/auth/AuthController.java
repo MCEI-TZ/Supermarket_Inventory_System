@@ -1,7 +1,7 @@
 package com.mceit_z.Inventory_System.controllers.auth;
 
 import com.mceit_z.Inventory_System.config.jwt.JwtTokenProvider;
-import com.mceit_z.Inventory_System.models.UserProfile;
+import com.mceit_z.Inventory_System.dto.user.LoginUserDTO;
 import com.mceit_z.Inventory_System.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,19 +21,32 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    // Inyección por constructor (recomendado)
     @Autowired
-    private AuthenticationManager authenticationManager;
-    private JwtTokenProvider jwtTokenProvider;
-    private PasswordEncoder passwordEncoder;
-    private UserService userService;
+    public AuthController(
+            AuthenticationManager authenticationManager,
+            JwtTokenProvider jwtTokenProvider,
+            PasswordEncoder passwordEncoder,
+            UserService userService
+    ) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
+    }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserProfile userProfile) {
+    public ResponseEntity<?> login(@RequestBody LoginUserDTO loginUserDTO) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            userProfile.getUsername(),
-                            userProfile.getPassword()
+                            loginUserDTO.getUsername(),
+                            loginUserDTO.getPassword()
                     )
             );
 
@@ -41,20 +54,18 @@ public class AuthController {
 
             return ResponseEntity.ok(Map.of(
                     "token", token,
-                    "username", authentication.getName()
+                    "username", authentication.getName(),
+                    "authorities", authentication.getAuthorities()
             ));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(401).body(Map.of("error", "Invalid username or password"));
+            return ResponseEntity.status(401).body(Map.of("error", "Credenciales inválidas"));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(Map.of("error", "An error occurred during authentication"));
+            // ¡Registra el error real para diagnóstico!
+            return ResponseEntity.status(500).body(Map.of(
+                    "error", "Error en autenticación",
+                    "message", e.getMessage()
+            ));
         }
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserProfile user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encripta aquí
-        userService.createUser(user);
-        return ResponseEntity.ok("User Registered Successfully");
     }
 
 }
