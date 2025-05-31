@@ -3,6 +3,7 @@ package com.mceit_z.Inventory_System.config.jwt;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
+import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
@@ -31,6 +32,7 @@ public class JwtTokenProvider {
                 new JWSHeader.Builder(JWSAlgorithm.HS256).build(),
                 claims
         );
+        signedJWT.sign(new MACSigner(jwtSecret.getBytes()));
         return signedJWT.serialize();
     }
     public String getUsernameFromToken(String token){
