@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="user")
+@Table(name = "app_user")
 public class UserProfile implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -34,15 +34,15 @@ public class UserProfile implements Serializable {
     private String fullName;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(
+            name = "user_rol",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id_rol")
+    )
     private Set<Rol> roles = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branch branch;
-
-
 
 }
