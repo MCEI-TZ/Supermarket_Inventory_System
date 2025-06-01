@@ -3,10 +3,11 @@ package com.mceit_z.Inventory_System.controllers.auth;
 import com.mceit_z.Inventory_System.config.jwt.JwtTokenProvider;
 import com.mceit_z.Inventory_System.dto.user.LoginUserDTO;
 import com.mceit_z.Inventory_System.services.user.UserService;
+import com.nimbusds.jose.JOSEException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,31 +42,23 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginUserDTO loginUserDTO) {
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginUserDTO.getUsername(),
-                            loginUserDTO.getPassword()
-                    )
-            );
+    public ResponseEntity<?> login(@RequestBody LoginUserDTO loginUserDTO) throws JOSEException {
 
-            String token = jwtTokenProvider.generateToken(authentication);
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginUserDTO.getUsername(),
+                        loginUserDTO.getPassword()
+                )
+        );
 
-            return ResponseEntity.ok(Map.of(
-                    "token", token,
-                    "username", authentication.getName(),
-                    "authorities", authentication.getAuthorities()
-            ));
-        } catch (BadCredentialsException e) {
-            return ResponseEntity.status(401).body(Map.of("error", "Credenciales inválidas"));
-        } catch (Exception e) {
-            // ¡Registra el error real para diagnóstico!
-            return ResponseEntity.status(500).body(Map.of(
-                    "error", "Error en autenticación",
-                    "message", e.getMessage()
-            ));
-        }
+        String token = jwtTokenProvider.generateToken(authentication);
+
+        return ResponseEntity.ok(Map.of(
+                "token", token,
+                "username", authentication.getName(),
+                "authorities", authentication.getAuthorities()
+        ));
+
     }
 
 }
