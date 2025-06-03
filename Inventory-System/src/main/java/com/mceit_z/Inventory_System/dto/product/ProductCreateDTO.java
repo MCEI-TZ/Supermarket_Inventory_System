@@ -23,5 +23,5 @@ public class ProductCreateDTO {
 
     private Date expirationDate;
 
-    private Category category;
+    private Long categoryId;
 }
