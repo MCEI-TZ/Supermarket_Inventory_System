@@ -14,11 +14,10 @@ import java.util.Date;
 @NoArgsConstructor
 public class ProductStockUpdateDTO {
     private Long idProductStock;
-    private Product product;
-    private Branch branch;
-    private Supplier supplier;
+    private Long productId;
+    private Long branchId;
+    private Long supplierId;
     private int quantity;
-    private Integer stock;
     private double price;
     private Date lastRestockDate;
 }
