@@ -21,5 +21,5 @@ public class ProductUpdateDTO {
 
     private Date expirationDate;
 
-    private Category category;
+    private Long categoryId;
 }
