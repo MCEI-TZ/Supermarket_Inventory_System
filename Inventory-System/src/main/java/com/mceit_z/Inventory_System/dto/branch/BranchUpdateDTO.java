@@ -20,6 +20,4 @@ public class BranchUpdateDTO {
     private String city;
 
     private String region;
-
-    private List<UserProfile> users;
 }
