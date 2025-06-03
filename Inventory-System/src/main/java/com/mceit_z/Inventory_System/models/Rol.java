@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
 @Entity
@@ -24,6 +23,7 @@ public class Rol implements Serializable {
 
     @NotNull
     @NotEmpty
+    @Column(unique = true)
     private String name;
 
 }
