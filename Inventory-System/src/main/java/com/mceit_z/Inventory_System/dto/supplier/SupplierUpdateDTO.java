@@ -12,7 +12,7 @@ public class SupplierUpdateDTO {
 
     private String name;
 
-    private String ContactName;
+    private String contactName;
 
     private String email;
 

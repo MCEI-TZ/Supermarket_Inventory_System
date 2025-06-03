@@ -11,6 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductReadDTO {
+    private Long idProduct;
+
     private String name;
 
     private String description;
@@ -19,5 +21,5 @@ public class ProductReadDTO {
 
     private Date expirationDate;
 
-    private Category category;
+    private String categoryName;
 }

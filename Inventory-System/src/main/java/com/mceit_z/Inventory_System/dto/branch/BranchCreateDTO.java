@@ -21,6 +21,4 @@ public class BranchCreateDTO {
     private String city;
 
     private String region;
-
-    private List<UserProfile> users;
 }

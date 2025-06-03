@@ -2,13 +2,12 @@ package com.mceit_z.Inventory_System.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -29,20 +28,18 @@ public class UserProfile implements Serializable {
     private String password;
 
     @Column(unique = true)
-    private  String email;
+    private String email;
 
     private String fullName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_rol",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id_user"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id_rol")
-    )
-    private Set<Rol> roles = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
+    @NotNull
+    private Rol rol;
 
     @ManyToOne
-    @JoinColumn(name = "branch_id")
+    @JoinColumn(name = "id_branch")
+    @NotNull
     private Branch branch;
 
 }

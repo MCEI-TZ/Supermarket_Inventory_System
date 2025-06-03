@@ -6,13 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserReadDTO {
+    private Long idUser;
+
     private String username;
 
     private String password;
@@ -21,7 +20,7 @@ public class UserReadDTO {
 
     private String fullName;
 
-    private Set<Rol> roles = new HashSet<>();
+    private String rolName;
 
-    private Branch branch;
+    private String branchName;
 }

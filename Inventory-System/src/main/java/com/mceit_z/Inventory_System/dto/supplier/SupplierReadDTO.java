@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupplierReadDTO { ;
+public class SupplierReadDTO {
+    private Long idSupplier;
 
     private String name;
 
-    private String ContactName;
+    private String contactName;
 
     private String email;
 

@@ -4,7 +4,6 @@ import com.mceit_z.Inventory_System.config.jwt.JwtTokenProvider;
 import com.mceit_z.Inventory_System.dto.user.LoginUserDTO;
 import com.mceit_z.Inventory_System.services.user.UserService;
 import com.nimbusds.jose.JOSEException;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

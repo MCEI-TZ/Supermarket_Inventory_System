@@ -1,11 +1,14 @@
 package com.mceit_z.Inventory_System.models;
 
+import com.mceit_z.Inventory_System.models.enums.MovementType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Data
@@ -21,17 +24,21 @@ public class InventoryMovements implements Serializable {
     private Long idInventoryMovement;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "id_product_stock")
     private ProductStock productStock;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "id_user")
     private UserProfile user; // Assuming you have a UserProfile entity representing the user who made the movement
 
-    private String movementType; // e.g., "IN", "OUT", "ADJUSTMENT"
+    @Enumerated(EnumType.STRING)
+    private MovementType movementType; // e.g., "IN", "OUT", "ADJUSTMENT"
 
     private Long quantity;
-    private String date; // Consider using LocalDate or LocalDateTime for better date handling
+
+    private Date date; // Consider using LocalDate or LocalDateTime for better date handling
 
     private String reason; // Optional description of the movement
 }

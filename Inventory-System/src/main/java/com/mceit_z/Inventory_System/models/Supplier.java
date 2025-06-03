@@ -25,8 +25,7 @@ public class Supplier implements Serializable {
     @NotEmpty
     private String name;
 
-    @Column(name = "contact_name")
-    private String ContactName;
+    private String contactName;
 
     @Email
     private String email;

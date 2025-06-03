@@ -23,7 +23,7 @@ public class UserUpdateDTO {
 
     private String fullName;
 
-    private Set<Rol> roles = new HashSet<>();
+    private Long rolId;
 
-    private Branch branch;
+    private Long branchId;
 }

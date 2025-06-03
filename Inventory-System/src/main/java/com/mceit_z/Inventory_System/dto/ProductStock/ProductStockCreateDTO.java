@@ -13,11 +13,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductStockCreateDTO {
-    private Product product;
-    private Branch branch;
-    private Supplier supplier;
+    private Long productId;
+    private Long branchId;
+    private Long supplierId;
     private int quantity;
-    private Integer stock;
     private double price;
     private Date lastRestockDate;
 }

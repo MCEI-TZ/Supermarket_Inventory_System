@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryCreateDTO {
     private String name;
-
-    private String descripcion;
+    private String description;
 }

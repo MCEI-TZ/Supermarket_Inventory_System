@@ -18,12 +18,12 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categroy")
+    @Column(name = "id_category")
     private Long idCategory;
 
     @NotEmpty
     @Column(unique = true)
     private String name;
 
-    private String descripcion;
+    private String description;
 }

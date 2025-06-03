@@ -13,11 +13,11 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductStockReadDTO {
-    private Product product;
-    private Branch branch;
-    private Supplier supplier;
+    private Long idProductStock;
+    private String productName;
+    private String branchName;
+    private String supplierName;
     private int quantity;
-    private Integer stock;
     private double price;
     private Date lastRestockDate;
 }

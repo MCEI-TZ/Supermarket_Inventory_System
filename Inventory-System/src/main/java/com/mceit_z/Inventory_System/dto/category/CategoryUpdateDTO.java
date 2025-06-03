@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryUpdateDTO {
     private Long idCategory;
-
     private String name;
-
-    private String descripcion;
+    private String description;
 }
