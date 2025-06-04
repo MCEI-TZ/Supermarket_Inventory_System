@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../../core/auth/services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToastService } from '../services/core/toast.service.ts.service';
+import { ToastService } from '../../../core/auth/services/toast/toast.service.ts.service';
 
 @Component({
   selector: 'app-login',

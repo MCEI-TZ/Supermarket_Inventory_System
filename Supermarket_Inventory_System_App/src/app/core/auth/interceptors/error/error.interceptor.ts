@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from '@angular/common/http';
-import { ToastService } from '../../services/core/toast.service.ts.service';
+import { ToastService } from '../../services/toast/toast.service.ts.service';
 import { catchError, throwError } from 'rxjs';
 
 export function errorInterceptor(
