@@ -4,12 +4,12 @@ import { Supplier } from './supplier.model';
 
 export class ProductStock {
   constructor(
-    idProductStock: number,
-    product: Product,
-    branch: Branch,
-    supplier: Supplier,
-    quantity: number,
-    price: number,
-    lastRestockDate: Date
+    public idProductStock: number,
+    public product: Product,
+    public branch: Branch,
+    public supplier: Supplier,
+    public quantity: number,
+    public price: number,
+    public lastRestockDate: Date
   ) {}
 }
