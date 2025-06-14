@@ -4,9 +4,9 @@ export class Product {
   constructor(
     public idProduct: number,
     public name: string,
-    public description: string,
     public barcode: string,
     public expirationDate: Date,
-    public category: Category
+    public category: Category,
+    public description?: string,
   ) {}
 }

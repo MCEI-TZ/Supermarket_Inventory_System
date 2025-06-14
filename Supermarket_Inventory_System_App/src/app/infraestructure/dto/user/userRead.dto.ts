@@ -4,6 +4,6 @@ export interface UserReadDTO {
   password: string;
   email: string;
   fullName: string;
-  idRol: number;
-  idBranch: number;
+  rolName: string;
+  branchName: string;
 }
